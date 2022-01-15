@@ -1,0 +1,70 @@
+
+name: stage CI/CD
+
+on:
+  push:
+    branches: [stage]
+  pull_request:
+    branches: [stage]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # - name: Super-Linter
+      #   uses: github/super-linter@v4.8.4
+      #   env:
+      #     VALIDATE_ALL_CODEBASE: false
+      #     DEFAULT_BRANCH: staging
+
+      - run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run the tests
+        run: npm test -- --coverage
+
+      # - name: Snyk
+      #   uses: snyk/actions@0.3.0
+      #   env:
+      #     SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      #   with:
+      #     command: monitor
+
+      - name: Build
+        run: yarn build
+
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+      - run: aws s3 sync ./out s3://uni-auth-stage.infoviz.co
+
+      # - name: Nuclei - DAST Scan
+      #   uses: projectdiscovery/nuclei-action@v1.0.5
+      #   with:
+      #       target: http://uni-auth-stage.infoviz.co.s3-website.ap-south-1.amazonaws.com/
+
+      # - name: Lighthouse CI Action
+      #   uses: treosh/lighthouse-ci-action@v8
+      #   with:
+      #     urls: |
+      #       http://uni-auth-stage.infoviz.co.s3-website.ap-south-1.amazonaws.com/
+      #     budgetPath: ./budget.json # test performance budgets
+      #     uploadArtifacts: true # save results as an action artifacts
+      #     temporaryPublicStorage: true # upload lighthouse report to the temporary storage
+
+      # - name: Is Website vulnerable
+      #   uses: lirantal/is-website-vulnerable@1.15.10
+      #   with:
+      #     scan-url: http://uni-auth-stage.infoviz.co.s3-website.ap-south-1.amazonaws.com/
