@@ -23,7 +23,7 @@ jobs:
         uses: github/super-linter@v4
         env:
           VALIDATE_ALL_CODEBASE: false
-          DEFAULT_BRANCH: main
+          DEFAULT_BRANCH: dev
           GITHUB_TOKEN: ${{ secrets.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 }}
 
   build:
