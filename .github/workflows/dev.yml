@@ -26,17 +26,17 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
 
-    - name: Checkout repository
-       uses: actions/checkout@v2
+    # - name: Checkout repository
+    #    uses: actions/checkout@v2
 
-    - name: Super-Linter
-      uses: github/super-linter@v4.8.4
-      env:
-        VALIDATE_ALL_CODEBASE: false
-        DEFAULT_BRANCH: dev
+    # - name: Super-Linter
+    #   uses: github/super-linter@v4.8.4
+    #   env:
+    #     VALIDATE_ALL_CODEBASE: false
+    #     DEFAULT_BRANCH: dev
 
-    - run: npm install -g yarn
+    # - run: npm install -g yarn
 
-    - name: Install dependencies
-       run: yarn install --frozen-lockfile
+    # - name: Install dependencies
+    #    run: yarn install --frozen-lockfile
      
