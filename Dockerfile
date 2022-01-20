@@ -1,4 +1,4 @@
-FROM node:12.18.1
+FROM ghcr.io/baisali-pradhan/uni-backbones:main
 ENV NODE_ENV=production
 
 WORKDIR /app
