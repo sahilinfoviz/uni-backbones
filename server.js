@@ -1,12 +1,5 @@
-const express = require('express')
-const server = express()
-const port = 3000
- 
-server.get('/', (req, res) => {
-  console.log(req.headers)
-  res.status(200).send('Hello world!')
-})
- 
-server.listen(port, () => {
-  console.log(`Server is listening on http://localhost:${port}`)
-})
+const app = require('./api')
+// start the app
+app.listen(3000, function() {
+    console.log('Express is running on port 3000');
+  });
