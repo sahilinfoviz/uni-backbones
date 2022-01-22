@@ -11,7 +11,7 @@ const router = express.Router();
 //FOR REGISTRATION
 router.post('/register', async (req, res) => {
     try{
-        const { email, phone, password, isTeacher, isStudent } = req.body;
+        const { firstName, lastName, email, phone, password, isTeacher, isStudent } = req.body;
         const saltRounds = 12;
         const salt = bcrypt.genSaltSync(saltRounds);
         if(email && phone && password){
@@ -22,8 +22,8 @@ router.post('/register', async (req, res) => {
                         if(testPassword(password)){
                             const hashedPassword = await bcrypt.hash(password, salt);
                             if(testPhone(phone)){
-                                const result = await pool.query('INSERT INTO users (email,phone,password) VALUES ($1,$2,$3) RETURNING *',
-                                [email,phone,hashedPassword]);
+                                const result = await pool.query('INSERT INTO users (firstName,lastName,email,phone,password) VALUES ($1,$2,$3,$4,$5) RETURNING *',
+                                [firstName,lastName,email,phone,hashedPassword]);
                                 await pool.query('INSERT INTO roles (id, isStudent, isTeacher) VALUES ($1,$2,$3) RETURNING *',[result.rows[0].id,isStudent,isTeacher])
                                 res.json('successfully registered')
                                 } else return res.json('phone number is not in valid format');
