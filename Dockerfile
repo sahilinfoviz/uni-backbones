@@ -8,7 +8,7 @@ ENV PG_HOST=ls-cfd3c7449cb823bbb9c74730db5e6056876c2aee.cpryfr3ooru3.ap-south-1.
 ENV PG_PORT=5432
 ENV JWT_SECRET=sdvbhebvjebu34r8u3hf34hy39cb93h43hghcb234hc249nu3h3b3434h
 
-WORKDIR /app
+WORKDIR /
 
 COPY ["package.json", "package-lock.json*", "./"]
 
