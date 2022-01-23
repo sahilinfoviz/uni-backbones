@@ -1,5 +1,5 @@
 FROM node:12.18.1
-ENV NODE_ENV=development
+ENV NODE_ENV="production"
 ENV PORT=3000
 ENV PG_USER=dbmasteruser
 ENV PG_PASSWORD=baishaly123
