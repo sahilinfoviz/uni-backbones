@@ -24,8 +24,8 @@ router.post('/register', async (req, res) => {
                             if(testPhone(phone)){
                                 const myResult = await pool.query('SELECT * FROM users WHERE phone = $1',[phone]);
                                 if(myResult.rows.length === 0){
-                                const finalResult = await pool.query('INSERT INTO users (firstName,lastName,email,phone) VALUES ($1,$2,$3,$4) RETURNING *',
-                                [firstName,lastName,email,phone]);
+                                const finalResult = await pool.query('INSERT INTO users (firstName,lastName,email,phone,hashedPassword) VALUES ($1,$2,$3,$4,$5) RETURNING *',
+                                [firstName,lastName,email,phone, hashedPassword]);
                                 await pool.query('INSERT INTO roles (id, isStudent, isTeacher) VALUES ($1,$2,$3) RETURNING *',[finalResult.rows[0].id,isStudent,isTeacher]);
                                 } else return res.json('phone number already exists');
                             } else return res.json('phone number is not in valid format');
