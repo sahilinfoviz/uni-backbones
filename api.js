@@ -16,12 +16,13 @@ app.use(helmet());
 // initialize passport with express
 app.use(passport.initialize());
 
+const corsOptions = { credentials: true, origin: process.env.URL || '*' };
+app.use(cors(corsOptions));
 // parse application/json
 app.use(bodyParser.json());
 //parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-const corsOptions = { credentials: true, origin: process.env.URL || '*' };
-app.use(cors(corsOptions));
+
 
 
 app.use('/api', userRouter)
