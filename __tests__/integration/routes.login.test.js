@@ -103,7 +103,6 @@ let auth
         email: "anitadas@gmail.com",
         password: "Secret123@"
       });
-      console.log(response.body);
       expect(response.body).toBe("login unsuccessful");
       expect(response.statusCode).toBe(500);
       //expect(response.body).toHaveProperty("token");
