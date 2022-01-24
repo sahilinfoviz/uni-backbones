@@ -1,5 +1,6 @@
 const express = require('express');
-const helmet = require('helmet')
+const helmet = require('helmet');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const jwt = require('jsonwebtoken');
@@ -14,11 +15,14 @@ app.use(helmet());
 
 // initialize passport with express
 app.use(passport.initialize());
-
+app.use(cors());
 // parse application/json
 app.use(bodyParser.json());
 //parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+//const corsOptions = { credentials: true, origin: process.env.URL || '*' };
+//app.use(cors(corsOptions));
+
 
 app.use('/api', userRouter)
 app.use('/auth', loginRouter)
