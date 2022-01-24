@@ -35,6 +35,7 @@ router.post('/register', async (req, res) => {
         }
         else return res.json('email or phone or password field can not be empty')
     }catch(err){
+        console.log(err);
         res.status(500).json('registration unsuccessful');
     }
 })
