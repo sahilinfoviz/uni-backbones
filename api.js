@@ -18,6 +18,7 @@ app.use(passport.initialize());
 
 const corsOptions = { credentials: true, origin: process.env.URL || '*' };
 app.use(cors(corsOptions));
+app.use(cors());
 // parse application/json
 app.use(bodyParser.json());
 //parse application/x-www-form-urlencoded
