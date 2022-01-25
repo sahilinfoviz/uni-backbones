@@ -55,6 +55,7 @@ router.post('/login', async function(req, res, next) {
         let student = result.rows[0].isstudent; 
         let payload = user.rows[0];
         let token = jwt.sign(payload, jwtOptions.secretOrKey,{ expiresIn: '30m' });
+        res.set('Access-Control-Allow-Origin', '*');
         res.json({ msg: 'ok', token: token , isTeacher: teacher, isStudent: student});
     }
       } 
@@ -68,9 +69,7 @@ router.post('/login', async function(req, res, next) {
   
 // To check PASSPORT authentication strategy working or not 
   
-router.get('/allUser',passport.authenticate('jwt', { session: false }), function(req, res) {
-    getAllUsers().then(user => res.status(200).json(user.rows)); 
-  })
+
 
 
 // To check authorization for teacher role
