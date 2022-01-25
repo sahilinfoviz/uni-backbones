@@ -47,7 +47,7 @@ router.post('/login', async function(req, res, next) {
         return res.json('No such user found');
       } else {
         // Valid password check
-    const correctPassword = await bcrypt.compare(password, user.rows[0].password);
+    const correctPassword = await bcrypt.compare(password, user.rows[0].mysecret);
     if (!correctPassword) return res.json('incorrect password');
     else{
         const result = await pool.query('SELECT * FROM roles where id = $1',[user.rows[0].id]);
