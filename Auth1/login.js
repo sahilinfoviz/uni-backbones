@@ -20,8 +20,9 @@ jwtOptions.secretOrKey = process.env.JWT_SECRET;
 
 
 const getAllUsers = async () => {
-    return await pool.query('SELECT * FROM users');
-  };
+  const user = await pool.query('SELECT * FROM users');
+  return user;
+};
 // lets create our strategy for web token
 let strategy = new JwtStrategy(jwtOptions, async function(jwt_payload, next) {
     console.log('payload received', jwt_payload.id);
