@@ -3,3 +3,4 @@
 
 # dotenv environment variables file
 
+/db.sql
