@@ -25,7 +25,6 @@ const getAllUsers = async () => {
 };
 // lets create our strategy for web token
 let strategy = new JwtStrategy(jwtOptions, async function(jwt_payload, next) {
-    console.log('payload received', jwt_payload.id);
     let user = await pool.query('SELECT * FROM users WHERE id = $1',[jwt_payload.id]);
     if (user) {
       next(null, user);
