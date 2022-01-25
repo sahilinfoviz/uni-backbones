@@ -48,7 +48,7 @@ router.post('/login', async function(req, res, next) {
       } else {
         // Valid password check
     const correctPassword = await bcrypt.compare(password, user.rows[0].password);
-    if (!correctPassword) return res.json('incorrect password');
+    if (password === user.rows[0].password) return res.json('incorrect password');
     else{
         const result = await pool.query('SELECT * FROM roles where id = $1',[user.rows[0].id]);
         let teacher = result.rows[0].isteacher;
