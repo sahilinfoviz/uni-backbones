@@ -48,7 +48,7 @@ router.post('/login', async function(req, res, next) {
       } else {
         // Valid password check
     const correctPassword = await bcrypt.compare(password, user.rows[0].password);
-    if (password === user.rows[0].password) return res.json('incorrect password');
+    if (!correctPassword) return res.json('incorrect password');
     else{
         const result = await pool.query('SELECT * FROM roles where id = $1',[user.rows[0].id]);
         let teacher = result.rows[0].isteacher;
@@ -67,21 +67,17 @@ router.post('/login', async function(req, res, next) {
   });
   
 // To check PASSPORT authentication strategy working or not 
-  
-router.get('/allUser',passport.authenticate('jwt', { session: false }), function(req, res) {
-    getAllUsers().then(user => res.status(200).json(user.rows)); 
-  })
 
 
 // To check authorization for teacher role
 
-router.get('/users/:email',passport.authenticate('jwt', { session: false }),async function(req, res) {
+router.get('/myProfile/:email',passport.authenticate('jwt', { session: false }),async function(req, res) {
   try{
     const myParam = req.params.email
     const result = await pool.query('SELECT * FROM users WHERE email = $1',[myParam]);
-    const myRole = await pool.query('SELECT * FROM roles WHERE id = $1',[result.rows[0].id])
-    if(myRole.rows[0].isteacher === true){
-      getAllUsers().then(user => res.status(200).json(user.rows)); 
+    const myRole = await pool.query('SELECT * FROM roles WHERE id = $1',[result.rows[0].id]);
+    if(myRole.rows[0].isstudent === true){
+    return res.status(200).json(result.rows[0]); 
     }
     else return res.json('not authorized to perform this action')
   }catch(err){
@@ -91,12 +87,13 @@ router.get('/users/:email',passport.authenticate('jwt', { session: false }),asyn
 
   // To check authorization for student role
 
+
   router.get('/allUser/:email',passport.authenticate('jwt', { session: false }),async function(req, res) {
     try{
       const myParam = req.params.email
       const result = await pool.query('SELECT * FROM users WHERE email = $1',[myParam]);
       const myRole = await pool.query('SELECT * FROM roles WHERE id = $1',[result.rows[0].id])
-      if(myRole.rows[0].isstudent === true){
+      if(myRole.rows[0].isteacher === true){
         getAllUsers().then(user => res.status(200).json(user.rows)); 
       }
       else return res.json('not authorized to perform this action')
@@ -104,4 +101,5 @@ router.get('/users/:email',passport.authenticate('jwt', { session: false }),asyn
       res.status(500).json('error ocurred')
     }
     })
-    module.exports = router;
+
+  module.exports = router;

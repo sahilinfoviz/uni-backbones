@@ -8,7 +8,7 @@ CREATE TABLE users (
     phone VARCHAR(12) NOT NULL UNIQUE,
     isBlocked BOOLEAN DEFAULT false,
     iSDeleted BOOLEAN DEFAULT false,
-    mySecret TEXT,
+    password TEXT,
     createdat timestamp without time zone default (now() at time zone 'utc'),
     LastUpdatedAt TIMESTAMPTZ
 );
