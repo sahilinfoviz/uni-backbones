@@ -55,6 +55,7 @@ router.post('/login', async function(req, res, next) {
         let student = result.rows[0].isstudent; 
         let payload = user.rows[0];
         let token = jwt.sign(payload, jwtOptions.secretOrKey,{ expiresIn: '30m' });
+        res.set('Access-Control-Allow-Origin', '*');
         res.json({ msg: 'ok', token: token , isTeacher: teacher, isStudent: student});
     }
       } 
@@ -67,17 +68,19 @@ router.post('/login', async function(req, res, next) {
   });
   
 // To check PASSPORT authentication strategy working or not 
+  
+
 
 
 // To check authorization for teacher role
 
-router.get('/myProfile/:email',passport.authenticate('jwt', { session: false }),async function(req, res) {
+router.get('/users/:email',passport.authenticate('jwt', { session: false }),async function(req, res) {
   try{
     const myParam = req.params.email
     const result = await pool.query('SELECT * FROM users WHERE email = $1',[myParam]);
-    const myRole = await pool.query('SELECT * FROM roles WHERE id = $1',[result.rows[0].id]);
-    if(myRole.rows[0].isstudent === true){
-    return res.status(200).json(result.rows[0]); 
+    const myRole = await pool.query('SELECT * FROM roles WHERE id = $1',[result.rows[0].id])
+    if(myRole.rows[0].isteacher === true){
+      getAllUsers().then(user => res.status(200).json(user.rows)); 
     }
     else return res.json('not authorized to perform this action')
   }catch(err){
@@ -87,13 +90,12 @@ router.get('/myProfile/:email',passport.authenticate('jwt', { session: false }),
 
   // To check authorization for student role
 
-
   router.get('/allUser/:email',passport.authenticate('jwt', { session: false }),async function(req, res) {
     try{
       const myParam = req.params.email
       const result = await pool.query('SELECT * FROM users WHERE email = $1',[myParam]);
       const myRole = await pool.query('SELECT * FROM roles WHERE id = $1',[result.rows[0].id])
-      if(myRole.rows[0].isteacher === true){
+      if(myRole.rows[0].isstudent === true){
         getAllUsers().then(user => res.status(200).json(user.rows)); 
       }
       else return res.json('not authorized to perform this action')
