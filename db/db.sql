@@ -15,6 +15,6 @@ CREATE TABLE users (
 
 CREATE TABLE roles (
     id uuid PRIMARY KEY REFERENCES users(id),
-    isTeacher BOOLEAN DEFAULT false,
-    isStudent BOOLEAN DEFAULT false
+    isteacher BOOLEAN DEFAULT false,
+    isstudent BOOLEAN DEFAULT false
 );
