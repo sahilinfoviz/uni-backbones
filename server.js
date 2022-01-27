@@ -1,5 +1,8 @@
-const app = require('./api')
+const app = require('./api');
+require('dotenv').config();
+const PORT = process.env.PORT;
+
 // start the app
-app.listen(3000, function() {
-    console.log('Express is running on port 3000');
+app.listen(PORT, function() {
+    console.log(`backend server is running on port ${PORT}`);
   });
