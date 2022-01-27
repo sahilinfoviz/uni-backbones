@@ -42,4 +42,15 @@ app.get('/usersList',requireTeacher, async (req,res) => {
     }
 });
 
+app.post('/randomData',requireTeacher, async (req,res) => {
+    try{
+        res.status(200).json({message: 'you are welcome'});
+    } catch(err) {
+        console.log(err);
+        return res.status(400)
+                  .json({message: 'Something went wrong.'});
+    }
+});
+
+
 module.exports = app;
