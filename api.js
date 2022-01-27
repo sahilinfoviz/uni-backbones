@@ -33,8 +33,8 @@ app.use('/auth', loginRouter)
 app.get('/welcome', function(req, res) {
     res.json({ message: 'Express is up!' });
   })
-  require('dotenv').config();
+require('dotenv').config();
 
-  const PORT = process.env.PORT;
+const PORT = process.env.PORT;
 
-  module.exports = app;
+module.exports = app;
