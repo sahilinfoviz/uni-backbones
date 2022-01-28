@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const jwtDecode = require('jwt-decode');
 const db = require('../db/db_config');
 const app = express();
+app.disable("x-powered-by");
 app.use(cookieParser());
 
 
