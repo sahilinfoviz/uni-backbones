@@ -5,9 +5,9 @@ const app = require("../../api");
 
 // for hashing the password successfully when we create users
 const bcrypt = require("bcrypt");
-const { password } = require('pg/lib/defaults');
 
-let auth 
+
+//let auth 
 
   beforeAll(async () => {
     await db.query("CREATE TABLE users (id SERIAL PRIMARY KEY,email TEXT NOT NULL UNIQUE,phone VARCHAR(12) NOT NULL UNIQUE,isBlocked BOOLEAN DEFAULT false,iSDeleted BOOLEAN DEFAULT false,password TEXT NOT NULL,createdat timestamp without time zone default (now() at time zone 'utc'),LastUpdatedAt TIMESTAMPTZ)")
