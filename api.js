@@ -1,6 +1,5 @@
 const express = require('express');
 const compression = require('compression');
-const xss = require('xss');
 require('dotenv').config();
 const helmet = require('helmet');
 const cors = require('cors');
@@ -16,8 +15,9 @@ const csrfProtection = csrf({
 });
 
 const app = express();
+app.disable("x-powered-by");
 app.use(compression());
-app.use(xss());
+
 app.use(helmet());
 
 const corsOptions = { credentials: true, origin: process.env.URL || '*' };
@@ -28,6 +28,7 @@ app.use(bodyParser.json());
 //parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 
 app.use('/new',registerRouter);
 app.use('/api',loginRouter);
