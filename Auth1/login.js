@@ -54,7 +54,15 @@ app.post('/login', async (req, res) => {
         }
 });
 
-
+// app.get('/logout', async(req, res) => {
+//     try{
+//         res.clearCookie('token');
+//         console.log('logout successfully');
+//     } catch(err){
+//         console.log(err);
+//         return res.status(500).send('something gone wrong')
+//     }
+// });
 
 
 module.exports = app;
