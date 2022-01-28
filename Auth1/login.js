@@ -16,7 +16,7 @@ app.post('/login', async (req, res) => {
         const { email, password } = req.body;
         const user = await db.query('SELECT * FROM users WHERE email = $1',[email]);
         if(user.rows.length === 0){
-            return res.status(403).json({message: "wrong email or password"});
+            return res.status(403).send("wrong email or password");
          }
         else {
             const myRoles = await db.query('SELECT * FROM roles WHERE id = $1',[user.rows[0].id]);
@@ -26,7 +26,7 @@ app.post('/login', async (req, res) => {
             else role = 'student';
             const passwordValidate = await bcrypt.compare(password,user.rows[0].password);
             if(!passwordValidate){
-                return res.status(403).json({message: "wrong email or password"});
+                return res.status(403).send("wrong email or password");
             } else {
                     const data = {
                     fistName: user.rows[0].firstname,
@@ -50,7 +50,6 @@ app.post('/login', async (req, res) => {
                 }
             }  
         }catch(err) {
-            console.log(err);
             return res.status(400).json({message: 'Something went wrong.'});
         }
 });
