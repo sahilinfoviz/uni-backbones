@@ -24,7 +24,8 @@
     "helmet": "^5.0.1",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
-    "pg": "^8.7.1"
+    "pg": "^8.7.1",
+    "xss": "^1.0.10"
   },
   "devDependencies": {
     "dotenv": "^11.0.0",

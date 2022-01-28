@@ -1,5 +1,6 @@
 const express = require('express');
 const compression = require('compression');
+const xss = require('xss');
 require('dotenv').config();
 const helmet = require('helmet');
 const cors = require('cors');
@@ -16,6 +17,7 @@ const csrfProtection = csrf({
 
 const app = express();
 app.use(compression());
+app.use(xss());
 app.use(helmet());
 
 const corsOptions = { credentials: true, origin: process.env.URL || '*' };
