@@ -21,7 +21,7 @@ app.post('/login', async (req, res) => {
         else {
             const myRoles = await db.query('SELECT * FROM roles WHERE id = $1',[user.rows[0].id]);
             if (myRoles.rows[0].isteacher === true)
-            let role = 'teacher';
+            var role = 'teacher';
             else role = 'student';
             const passwordValidate = await bcrypt.compare(password,user.rows[0].password);
             if(!passwordValidate){
