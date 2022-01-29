@@ -7,7 +7,7 @@
     "dev": "nodemon server.js",
     "start": "node server.js",
     "test": "jest",
-    "testwatch": "jest --watchAll"
+    "testWatch": "jest --watchAll"
   },
   "keywords": [],
   "author": "",

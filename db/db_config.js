@@ -1,5 +1,5 @@
 require('dotenv').config();
-const db = process.env.NODE_ENV === "test" ? "users-test" : "postgres";
+const db = process.env.NODE_ENV === "test" ? "postgres" : "postgres";
 const Pool = require('pg').Pool
 
 const pool = new Pool({

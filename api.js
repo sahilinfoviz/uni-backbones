@@ -12,15 +12,15 @@ const registerRouter = require('./user_register');
 const loginRouter = require('./Auth1/login');
 const myRoutes = require('./Auth1/route');
 const csrf = require('csurf');
-const rateLimit = require('express-rate-limit');
+//const rateLimit = require('express-rate-limit');
 const csrfProtection = csrf({
     cookie: true
 });
-const limiter = rateLimit({
-    max: 100,// limit each IP to 100 max requests
-    windowMs: 60 * 60 * 1000, // 1 Hour
-    message: 'Too many requests' // message to send
-});
+// const limiter = rateLimit({
+//     max: 100,// limit each IP to 100 max requests
+//     windowMs: 60 * 60 * 1000, // 1 Hour
+//     message: 'Too many requests' // message to send
+// });
 
 const app = express();
 app.disable("x-powered-by");
@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 //parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(limiter)
+//app.use(limiter)
 
 
 app.use('/new',registerRouter);
