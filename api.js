@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const compression = require('compression');
 const xss = require('xss-clean');
@@ -26,7 +27,7 @@ app.disable("x-powered-by");
 app.use(compression());
 
 app.use(helmet());
-app.use(xss())
+app.use(xss());
 
 const corsOptions = { credentials: true, origin: process.env.URL || '*' };
 app.use(cors(corsOptions));
