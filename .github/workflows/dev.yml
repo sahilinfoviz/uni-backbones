@@ -38,7 +38,7 @@ jobs:
     #   env:
     #     VALIDATE_ALL_CODEBASE: false
     #     DEFAULT_BRANCH: dev
-          # GITHUB_TOKEN: ${{ secrets.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 }}
+          
 
 # -------------------Docker run---------------------
   # build-and-push-image:
