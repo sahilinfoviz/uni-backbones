@@ -1,7 +1,6 @@
 process.env.NODE_ENV = "test";
 const request = require("supertest");
 const app = require("../../api");
-const db = require('../../db/db_config');
 
 // to test for unsuccessful login
 

@@ -43,7 +43,7 @@ app.get('/usersList',requireTeacher, async (req,res) => {
     }
 });
 
-app.post('/randomData',requireTeacher, async (req,res) => {
+app.post('/randomData',requireTeacher, (req,res) => {
     try{
         res.status(200).json({message: 'you are welcome'});
     } catch(err) {
