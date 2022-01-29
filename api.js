@@ -1,4 +1,4 @@
-require('newrelic');
+//require('newrelic');
 const express = require('express');
 const compression = require('compression');
 const xss = require('xss-clean');
