@@ -21,7 +21,7 @@ const db = require('../../db/db_config');
         email: "anitada@gmail.com",
         password: "Secret123@"
       });
-      expect(response.body).toBe("email or phone or password field can not be empty");
+      expect(response.body).toBe("emai or phone or password field can not be empty");
     })
   });
 
