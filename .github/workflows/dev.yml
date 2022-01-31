@@ -11,13 +11,13 @@ on:
 #   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  run-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+  # run-lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
   build:
     runs-on: ubuntu-latest
     strategy:
