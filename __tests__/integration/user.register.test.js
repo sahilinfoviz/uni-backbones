@@ -4,8 +4,10 @@ const app = require("../../api");
 const db = require('../../db/db_config');
 
   afterAll(async () => {
-    await db.query("DELETE FROM roles");
-    await db.query("DELETE FROM users");
+    await db.query("DELETE FROM roles r USING users u WHERE r.id = u.id AND u.email='suraj@gmail.com'");
+    await db.query("DELETE FROM roles r USING users u WHERE r.id = u.id AND u.email='suman@gmail.com'");
+    await db.query("DELETE FROM users WHERE email = 'suraj@gmail.com'");
+    await db.query("DELETE FROM users WHERE email = 'suman@gmail.com'");
   });
 
 

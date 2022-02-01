@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('./db/db_config');
 const {testEmail, testPhone, testPassword } = require('./utils/regex')
+const logger = require('./logger');
 const bcrypt = require('bcryptjs');
 
 const router = express.Router();
@@ -26,18 +27,37 @@ router.post('/register', async (req, res) => {
                                 const finalResult = await pool.query('INSERT INTO users (firstName,lastName,email,phone,password) VALUES ($1,$2,$3,$4,$5) RETURNING *',
                                 [firstName,lastName,email,phone,hashedPassword]);
                                 await pool.query('INSERT INTO roles (id, isStudent, isTeacher) VALUES ($1,$2,$3) RETURNING *',[finalResult.rows[0].id,isStudent,isTeacher]);
+                                logger.info(`user ${finalResult.rows[0].firstname} successfully registered`);
                                 return res.json('successfully registered')
-                                } else return res.json('phone number already exists');
-                            } else return res.json('phone number is not in valid format');
-                        } else return res.json('password is not in valid format');
+                                } else{
+                                    logger.warn('phone number already exists');
+                                    return res.json('phone number already exists');
+                                }     
+                            } else{
+                                logger.warn('phone number is not in valid format');
+                                return res.json('phone number is not in valid format');
+                            } 
+                        } else{
+                            logger.warn('password is not in valid format');
+                            return res.json('password is not in valid format');
+                        }
                     }
-                    else return res.json('email already exists');        
+                    else{
+                        logger.warn('email already exists');
+                        return res.json('email already exists');
+                    }        
                 }
-                else return res.json('email is not in valid format');
+                else{
+                    logger.warn('email is not in valid format');
+                    return res.json('email is not in valid format');
+                }
         }
-        else return res.json('email or phone or password field can not be empty')
+        else{
+            logger.warn('email or phone or password field can not be empty');
+            return res.json('email or phone or password field can not be empty');
+        }
     }catch(err){
-        console.log(err);
+        logger.error(err);
         res.status(500).json('registration unsuccessful');
     }
 })
