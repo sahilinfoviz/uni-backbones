@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80.55% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>29/36</span>
+                <span class='fraction'>30/40</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80.55% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>29/36</span>
+                <span class='fraction'>30/40</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -133,7 +133,12 @@
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -154,6 +159,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -164,6 +170,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -187,6 +194,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -210,6 +218,7 @@ const cookieParser = require('cookie-parser');
 const jwtDecode = require('jwt-decode');
 const db = require('../db/db_config');
 const logger = require('../logger');
+const sentry = require('../sentry_config');
 const bcrypt = require('bcryptjs/dist/bcrypt');
 const app = express();
 app.disable("x-powered-by");
@@ -222,6 +231,7 @@ app.post('/login', async (req, res) =&gt; {
         const { email, password } = req.body;
         const user = await db.query('SELECT * FROM users WHERE email = $1',[email]);
         <span class="missing-if-branch" title="if path not taken" >I</span>if(user.rows.length === 0){
+<span class="cstat-no" title="statement not covered" >            sentry.captureMessage('wrong email or password');</span>
 <span class="cstat-no" title="statement not covered" >            logger.error('wrong email or password');</span>
 <span class="cstat-no" title="statement not covered" >            return res.status(403).send("wrong email or password");</span>
          }
@@ -232,6 +242,7 @@ app.post('/login', async (req, res) =&gt; {
             else <span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="else path not taken" >E</span>role = 'student';</span>
             const passwordValidate = await bcrypt.compare(password,user.rows[0].password);
             <span class="missing-if-branch" title="if path not taken" >I</span>if(!passwordValidate){
+<span class="cstat-no" title="statement not covered" >                sentry.captureMessage('wrong email or password');</span>
 <span class="cstat-no" title="statement not covered" >                logger.error('wrong email or password');</span>
 <span class="cstat-no" title="statement not covered" >                return res.status(403).send("wrong email or password");</span>
             } else {
@@ -257,6 +268,7 @@ app.post('/login', async (req, res) =&gt; {
                 }
             }  
         }catch(err) {
+<span class="cstat-no" title="statement not covered" >            sentry.captureException(err);</span>
 <span class="cstat-no" title="statement not covered" >            logger.error(err);</span>
 <span class="cstat-no" title="statement not covered" >            return res.status(400).json({message: 'Something went wrong.'});</span>
         }
@@ -280,7 +292,7 @@ module.exports = app;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue Feb 01 2022 19:05:47 GMT+0530 (India Standard Time)
+                at Tue Feb 01 2022 19:17:55 GMT+0530 (India Standard Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>

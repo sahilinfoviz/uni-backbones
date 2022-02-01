@@ -3,6 +3,8 @@ require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const jwtDecode = require('jwt-decode');
 const db = require('../db/db_config');
+const logger = require('../logger');
+const sentry = require('../sentry_config');
 const app = express();
 app.disable("x-powered-by");
 app.use(cookieParser());
@@ -34,10 +36,11 @@ const requireTeacher = (req, res, next) => {
 
 app.get('/usersList',requireTeacher, async (req,res) => {
     try{
-        const listData = await db.query('SELECT firstName,lastName,email,phone FROM users');
+        const listData = await db.query('SELECT firstName,lastName,email,phone FROM user');
         res.status(200).json(listData.rows);
     } catch(err) {
-        console.log(err);
+        sentry.captureException(err);
+        logger.error(err);
         return res.status(400)
                   .json({message: 'Something went wrong.'});
     }
@@ -47,7 +50,8 @@ app.post('/randomData',requireTeacher, (req,res) => {
     try{
         res.status(200).json({message: 'you are welcome'});
     } catch(err) {
-        console.log(err);
+        sentry.captureException(err);
+        logger.error(err);
         return res.status(400)
                   .json({message: 'Something went wrong.'});
     }

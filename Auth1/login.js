@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const jwtDecode = require('jwt-decode');
 const db = require('../db/db_config');
 const logger = require('../logger');
+const sentry = require('../sentry_config');
 const bcrypt = require('bcryptjs/dist/bcrypt');
 const app = express();
 app.disable("x-powered-by");
@@ -17,6 +18,7 @@ app.post('/login', async (req, res) => {
         const { email, password } = req.body;
         const user = await db.query('SELECT * FROM users WHERE email = $1',[email]);
         if(user.rows.length === 0){
+            sentry.captureMessage('wrong email or password');
             logger.error('wrong email or password');
             return res.status(403).send("wrong email or password");
          }
@@ -27,6 +29,7 @@ app.post('/login', async (req, res) => {
             else role = 'student';
             const passwordValidate = await bcrypt.compare(password,user.rows[0].password);
             if(!passwordValidate){
+                sentry.captureMessage('wrong email or password');
                 logger.error('wrong email or password');
                 return res.status(403).send("wrong email or password");
             } else {
@@ -52,6 +55,7 @@ app.post('/login', async (req, res) => {
                 }
             }  
         }catch(err) {
+            sentry.captureException(err);
             logger.error(err);
             return res.status(400).json({message: 'Something went wrong.'});
         }
