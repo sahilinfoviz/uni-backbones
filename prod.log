@@ -1,0 +1,38 @@
+{"level":"info","message":"Number of CPUs is 8","service":"authentication-service","timestamp":"2022-02-01T13:34:59.087Z"}
+{"level":"info","message":"Master 16600 is running","service":"authentication-service","timestamp":"2022-02-01T13:34:59.089Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:35:01.180Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:35:01.180Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:35:01.186Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:35:01.228Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:35:01.275Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:35:01.282Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:35:01.307Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:35:01.332Z"}
+{"level":"warn","message":"email or phone or password field can not be empty","service":"authentication-service","timestamp":"2022-02-01T13:35:45.027Z"}
+{"level":"warn","message":"email is not in valid format","service":"authentication-service","timestamp":"2022-02-01T13:35:45.054Z"}
+{"level":"warn","message":"phone number is not in valid format","service":"authentication-service","timestamp":"2022-02-01T13:35:45.739Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-01T13:35:45.799Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-01T13:35:45.860Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-01T13:35:46.034Z"}
+{"level":"info","message":"user Suras successfully registered","service":"authentication-service","timestamp":"2022-02-01T13:35:46.035Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-01T13:35:46.177Z"}
+{"level":"info","message":"user Suras successfully registered","service":"authentication-service","timestamp":"2022-02-01T13:35:46.881Z"}
+{"level":"info","message":"Number of CPUs is 8","service":"authentication-service","timestamp":"2022-02-01T13:47:03.417Z"}
+{"level":"info","message":"Master 23984 is running","service":"authentication-service","timestamp":"2022-02-01T13:47:03.419Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:47:05.630Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:47:05.633Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:47:05.686Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:47:05.688Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:47:05.736Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:47:05.742Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:47:05.742Z"}
+{"level":"info","message":"backend server is running on port - 3000","service":"authentication-service","timestamp":"2022-02-01T13:47:05.747Z"}
+{"level":"warn","message":"email or phone or password field can not be empty","service":"authentication-service","timestamp":"2022-02-01T13:47:53.300Z"}
+{"level":"warn","message":"email is not in valid format","service":"authentication-service","timestamp":"2022-02-01T13:47:53.327Z"}
+{"level":"warn","message":"phone number is not in valid format","service":"authentication-service","timestamp":"2022-02-01T13:47:53.992Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-01T13:47:54.065Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-01T13:47:54.165Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-01T13:47:54.240Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-01T13:47:54.320Z"}
+{"level":"info","message":"user Suras successfully registered","service":"authentication-service","timestamp":"2022-02-01T13:47:54.711Z"}
+{"level":"info","message":"user Suras successfully registered","service":"authentication-service","timestamp":"2022-02-01T13:47:54.955Z"}

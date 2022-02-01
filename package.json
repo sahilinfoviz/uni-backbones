@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "NODE_ENV=development nodemon server.js",
     "start": "node server.js",
     "test": "jest --coverage",
     "testWatch": "jest --watchAll"
@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sentry/node": "^6.17.3",
+    "@sentry/tracing": "^6.17.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
     "compression": "^1.7.4",
@@ -27,6 +29,8 @@
     "jwt-decode": "^3.1.2",
     "newrelic": "^8.7.1",
     "pg": "^8.7.1",
+    "s3-streamlogger": "^1.7.0",
+    "winston": "^3.5.0",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {

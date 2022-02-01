@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Code coverage report for uni-backbones/utils/regex.js</title>
+    <title>Code coverage report for uni-backbones/logger/dev-logger.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,31 +19,31 @@
       <div class="pad1">
         <h1>
           <a href="../../index.html">All files</a> /
-          <a href="index.html">uni-backbones/utils</a> regex.js
+          <a href="index.html">uni-backbones/logger</a> dev-logger.js
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">50% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">7/7</span>
+            <span class="fraction">3/6</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">0% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">0/0</span>
+            <span class="fraction">0/2</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">0% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">3/3</span>
+            <span class="fraction">0/2</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">50% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">7/7</span>
+            <span class="fraction">3/6</span>
           </div>
         </div>
         <p class="quiet">
@@ -57,7 +57,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line high"></div>
+      <div class="status-line medium"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -73,35 +73,59 @@
 <a name='L12'></a><a href='#L12'>12</a>
 <a name='L13'></a><a href='#L13'>13</a>
 <a name='L14'></a><a href='#L14'>14</a>
-<a name='L15'></a><a href='#L15'>15</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span></td><td class="text"><pre class="prettyprint lang-js">function testEmail(input) {
-  const format = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-  return format.test(input);
-}
-function testPhone(input) {
-  const format = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-  return format.test(input);
-}
-function testPassword(input) {
-  const format = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*])[a-zA-Z0-9!@#$%^&amp;*]{6,16}$/;
-  return format.test(input);
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span></td><td class="text"><pre class="prettyprint lang-js">const { format, createLogger, transports } = require('winston');
+const { timestamp, combine, printf, errors } = format;
+&nbsp;
+function <span class="fstat-no" title="function not covered" >buildDevLogger(</span>) {
+    const logFormat = <span class="cstat-no" title="statement not covered" >printf(<span class="fstat-no" title="function not covered" >({</span> level, message, timestamp, stack }) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        return `${timestamp} ${level}: ${stack || message}`;</span>
+    })
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return createLogger({</span>
+        format: combine(
+            format.colorize(),
+            timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
+            errors({ stack: true }),
+            logFormat
+        ),
+        transports: [
+            new transports.Console(),
+            new transports.File({filename: 'dev.log'})
+        ],
+    });
 }
 &nbsp;
-&nbsp;
-module.exports ={testEmail,testPhone,testPassword}</pre></td></tr></table></pre>
+module.exports = buildDevLogger;</pre></td></tr></table></pre>
 
       <div class="push"></div>
       <!-- for sticky footer -->

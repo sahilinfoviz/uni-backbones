@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Code coverage report for uni-backbones/Auth1/route.js</title>
+    <title>Code coverage report for s3logsetup/Auth1/route.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
       <div class="pad1">
         <h1>
           <a href="../../index.html">All files</a> /
-          <a href="index.html">uni-backbones/Auth1</a> route.js
+          <a href="index.html">s3logsetup/Auth1</a> route.js
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">41.02% </span>
+            <span class="strong">40% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">16/39</span>
+            <span class="fraction">14/35</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -41,9 +41,9 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">41.02% </span>
+            <span class="strong">40% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">16/39</span>
+            <span class="fraction">14/35</span>
           </div>
         </div>
         <p class="quiet">
@@ -115,13 +115,7 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -162,7 +156,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -171,7 +164,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,8 +176,6 @@ require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const jwtDecode = require('jwt-decode');
 const db = require('../db/db_config');
-const logger = require('../logger');
-const sentry = require('../sentry_config');
 const app = express();
 app.disable("x-powered-by");
 app.use(cookieParser());
@@ -217,11 +207,10 @@ const requireTeacher = <span class="fstat-no" title="function not covered" >(r</
 &nbsp;
 app.get('/usersList',requireTeacher, <span class="fstat-no" title="function not covered" >as</span>ync (req,res) =&gt; {
 <span class="cstat-no" title="statement not covered" >    try{</span>
-        const listData = <span class="cstat-no" title="statement not covered" >await db.query('SELECT firstName,lastName,email,phone FROM user');</span>
+        const listData = <span class="cstat-no" title="statement not covered" >await db.query('SELECT firstName,lastName,email,phone FROM users');</span>
 <span class="cstat-no" title="statement not covered" >        res.status(200).json(listData.rows);</span>
     } catch(err) {
-<span class="cstat-no" title="statement not covered" >        sentry.captureException(err);</span>
-<span class="cstat-no" title="statement not covered" >        logger.error(err);</span>
+<span class="cstat-no" title="statement not covered" >        console.log(err);</span>
 <span class="cstat-no" title="statement not covered" >        return res.status(400)</span>
                   .json({message: 'Something went wrong.'});
     }
@@ -231,8 +220,7 @@ app.post('/randomData',requireTeacher, <span class="fstat-no" title="function no
 <span class="cstat-no" title="statement not covered" >    try{</span>
 <span class="cstat-no" title="statement not covered" >        res.status(200).json({message: 'you are welcome'});</span>
     } catch(err) {
-<span class="cstat-no" title="statement not covered" >        sentry.captureException(err);</span>
-<span class="cstat-no" title="statement not covered" >        logger.error(err);</span>
+<span class="cstat-no" title="statement not covered" >        console.log(err);</span>
 <span class="cstat-no" title="statement not covered" >        return res.status(400)</span>
                   .json({message: 'Something went wrong.'});
     }
@@ -253,7 +241,7 @@ module.exports = app;</pre></td></tr></table></pre>
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at Tue Feb 01 2022 19:17:55 GMT+0530 (India Standard Time)
+      at Tue Feb 01 2022 11:22:56 GMT+0530 (India Standard Time)
     </div>
     <script src="../../prettify.js"></script>
     <script>
