@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Code coverage report for uni-backbones/db/db_config.js</title>
+    <title>Code coverage report for uni-backbones/logger/index.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
       <div class="pad1">
         <h1>
           <a href="../../index.html">All files</a> /
-          <a href="index.html">uni-backbones/db</a> db_config.js
+          <a href="index.html">uni-backbones/logger</a> index.js
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">85.71% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">5/5</span>
+            <span class="fraction">6/7</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -41,9 +41,9 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">85.71% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">5/5</span>
+            <span class="fraction">6/7</span>
           </div>
         </div>
         <p class="quiet">
@@ -67,23 +67,29 @@
 <a name='L6'></a><a href='#L6'>6</a>
 <a name='L7'></a><a href='#L7'>7</a>
 <a name='L8'></a><a href='#L8'>8</a>
-<a name='L9'></a><a href='#L9'>9</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">require('dotenv').config();
-const db = process.env.NODE_ENV === "test" ? "postgres" : <span class="branch-1 cbranch-no" title="branch not covered" >"postgres";</span>
-const Pool = require('pg').Pool
+<span class="cline-any cline-yes">2x</span></td><td class="text"><pre class="prettyprint lang-js">const buildDevLogger = require('./dev-logger');
+const buildProdLogger = require('./prod-logger');
 &nbsp;
-const pool = new Pool({
-  connectionString: `postgres://${process.env.PG_USER}:${process.env.PG_PASSWORD}@${process.env.PG_HOST}:${process.env.PG_PORT}/${db}`
-});
-module.exports = pool
-&nbsp;</pre></td></tr></table></pre>
+let logger = null;
+<span class="missing-if-branch" title="if path not taken" >I</span>if (process.env.NODE_ENV === 'development') {
+<span class="cstat-no" title="statement not covered" >    logger = buildDevLogger();</span>
+} else {
+    logger = buildProdLogger();
+}
+&nbsp;
+module.exports = logger;</pre></td></tr></table></pre>
 
       <div class="push"></div>
       <!-- for sticky footer -->
