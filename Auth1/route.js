@@ -36,7 +36,7 @@ const requireTeacher = (req, res, next) => {
 app.get("/usersList", requireTeacher, async (req, res) => {
   try {
     const listData = await db.query(
-      "SELECT firstName,lastName,email,phone FROM user"
+      "SELECT firstName,lastName,email,phone FROM users"
     );
     res.status(200).json(listData.rows);
   } catch (err) {
