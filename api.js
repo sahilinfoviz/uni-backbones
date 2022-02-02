@@ -1,6 +1,6 @@
 require("newrelic");
 const express = require("express");
-
+const responseTime = require("response-time");
 const compression = require("compression");
 const xss = require("xss-clean");
 require("dotenv").config();
@@ -26,10 +26,8 @@ const csrfProtection = csrf({
 const app = express();
 app.disable("x-powered-by");
 app.use(compression());
-
 app.use(helmet());
 app.use(xss());
-
 const corsOptions = { credentials: true, origin: process.env.URL || "*" };
 app.use(cors(corsOptions));
 app.use(cors());
@@ -38,6 +36,7 @@ app.use(bodyParser.json());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(responseTime());
 //app.use(limiter);
 
 app.use("/new", registerRouter);
