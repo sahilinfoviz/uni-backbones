@@ -1,0 +1,66 @@
+2022-02-02 20:57:41 [32minfo[39m: Number of CPUs is 8
+2022-02-02 20:57:41 [32minfo[39m: Master 27268 is running
+2022-02-02 20:57:43 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 20:57:43 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 20:57:43 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 20:57:43 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 20:57:43 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 20:57:43 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 20:57:43 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 20:57:43 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:01:53 [32minfo[39m: worker 31460 died
+2022-02-02 21:01:54 [32minfo[39m: Number of CPUs is 8
+2022-02-02 21:01:54 [32minfo[39m: Master 30776 is running
+2022-02-02 21:01:56 [32minfo[39m: worker 24136 died
+2022-02-02 21:01:57 [32minfo[39m: Number of CPUs is 8
+2022-02-02 21:01:57 [32minfo[39m: Master 25228 is running
+2022-02-02 21:02:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:49 [32minfo[39m: Number of CPUs is 8
+2022-02-02 21:02:49 [32minfo[39m: Master 24220 is running
+2022-02-02 21:02:52 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:52 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:52 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:52 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:52 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:52 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:52 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:52 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:02:58 [32minfo[39m: Number of CPUs is 8
+2022-02-02 21:02:58 [32minfo[39m: Master 30160 is running
+2022-02-02 21:03:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:00 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:04 [32minfo[39m: worker 29792 died
+2022-02-02 21:03:05 [32minfo[39m: Number of CPUs is 8
+2022-02-02 21:03:05 [32minfo[39m: Master 29896 is running
+2022-02-02 21:03:07 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:07 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:07 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:07 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:07 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:07 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:07 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:03:07 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:07:45 [32minfo[39m: worker 27400 died
+2022-02-02 21:07:46 [32minfo[39m: Number of CPUs is 8
+2022-02-02 21:07:46 [32minfo[39m: Master 21644 is running
+2022-02-02 21:07:48 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:07:48 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:07:48 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:07:48 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:07:48 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:07:49 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:07:49 [32minfo[39m: backend server is running on port - 3000
+2022-02-02 21:07:49 [32minfo[39m: backend server is running on port - 3000
