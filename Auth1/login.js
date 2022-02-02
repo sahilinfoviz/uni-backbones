@@ -1,4 +1,5 @@
 const express = require("express");
+const { validationResult,body } = require('express-validator');
 require("dotenv").config();
 const myJwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
@@ -11,23 +12,36 @@ const app = express();
 app.disable("x-powered-by");
 app.use(cookieParser());
 
-app.post("/login", async (req, res) => {
+// For login route
+
+app.post("/login",
+// for validating input
+body('email').isEmail().normalizeEmail(),
+body('password').isLength({ min: 8 }),
+async (req, res) => {
   try {
+    const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() })
+  }
     const { email, password } = req.body;
     const user = await db.query("SELECT * FROM users WHERE email = $1", [
       email,
     ]);
+    // for checking if user exists
     if (user.rows.length === 0) {
       sentry.captureMessage("wrong email or password");
       logger.error("wrong email or password");
       return res.status(403).send("wrong email or password");
     } else {
+    // getting the role of logged in user
       const myRoles = await db.query("SELECT * FROM roles WHERE id = $1", [
         user.rows[0].id,
       ]);
       if (myRoles.rows[0].isteacher === true) {
         var role = "teacher";
       } else role = "student";
+      // validating password for login
       const passwordValidate = await bcrypt.compare(
         password,
         user.rows[0].password
@@ -37,6 +51,7 @@ app.post("/login", async (req, res) => {
         logger.error("wrong email or password");
         return res.status(403).send("wrong email or password");
       } else {
+        // generating payload
         const data = {
           fistName: user.rows[0].firstname,
           lastName: user.rows[0].lastname,
@@ -44,11 +59,12 @@ app.post("/login", async (req, res) => {
           userRole: role,
         };
         const userInfo = Object.assign({}, data);
+        // generating token
         const token = myJwt.sign(userInfo, process.env.JWT_SECRET, {
           algorithm: "HS256",
           expiresIn: "1h",
         });
-
+        // decoding token for getting expiry time
         const decodedToken = jwtDecode(token);
         const expiresAt = decodedToken.exp;
         res.cookie("token", token, {
