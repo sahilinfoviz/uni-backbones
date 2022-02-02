@@ -329,8 +329,8 @@ BRH:1
 end_of_record
 TN:
 SF:logger\prod-logger.js
-FN:14,(anonymous_0)
-FN:19,buildProdLogger
+FN:16,(anonymous_0)
+FN:21,buildProdLogger
 FNF:2
 FNH:1
 FNDA:0,(anonymous_0)
@@ -340,11 +340,11 @@ DA:2,2
 DA:3,2
 DA:4,2
 DA:6,2
-DA:11,2
-DA:14,2
-DA:16,0
-DA:20,2
-DA:27,2
+DA:13,2
+DA:16,2
+DA:18,0
+DA:22,2
+DA:29,2
 LF:10
 LH:9
 BRF:0
