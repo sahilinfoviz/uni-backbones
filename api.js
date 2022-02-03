@@ -13,7 +13,7 @@ const registerRouter = require("./user_register");
 const loginRouter = require("./Auth1/login");
 const myRoutes = require("./Auth1/route");
 const csrf = require("csurf");
-//const rateLimit = require("express-rate-limit");
+// const rateLimit = require("express-rate-limit");
 const csrfProtection = csrf({
   cookie: true,
 });
@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(responseTime());
-//app.use(limiter);
+// app.use(limiter);
 
 app.use("/new", registerRouter);
 app.use("/api", loginRouter);
