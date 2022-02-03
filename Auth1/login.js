@@ -43,7 +43,7 @@ app.post(
         if (user.rows.length === 0) {
           sentry.captureMessage("wrong email or password");
           logger.error("wrong email or password");
-          return res.status(403).send("wrong email or password");
+          return res.status(403).json({message:"wrong email or password"});
         } else {
           // getting the role of logged in user
           const myRoles = await db.query("SELECT * FROM roles WHERE id = $1", [
@@ -60,7 +60,7 @@ app.post(
           if (!passwordValidate) {
             sentry.captureMessage("wrong email or password");
             logger.error("wrong email or password");
-            return res.status(403).send("wrong email or password");
+            return res.status(403).json({message:"wrong email or password"});
           } else {
             // generating payload
             const data = {
