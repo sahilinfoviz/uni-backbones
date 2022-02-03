@@ -23,20 +23,20 @@ describe("POST /register",()=> {
 
 // to test for successful login
 
-describe("POST /login",()=> {
-    test("it should test for successful login", async () =>{
-      const response = await request(app)
-      .post("/api/login")
-      .send({
-        email: "suman@gmail.com",
-        password: "Default1@"
-      });
-      expect(response.body).toHaveProperty("expiresAt");
-      expect(response.body).toHaveProperty("message");
-      expect(response.body).toHaveProperty("userInfo");
-      expect(response.statusCode).toBe(200);
-    })
-  });
+// describe("POST /login",()=> {
+//     test("it should test for successful login", async () =>{
+//       const response = await request(app)
+//       .post("/api/login")
+//       .send({
+//         email: "suman@gmail.com",
+//         password: "Default1@"
+//       });
+//       expect(response.body).toHaveProperty("expiresAt");
+//       expect(response.body).toHaveProperty("message");
+//       expect(response.body).toHaveProperty("userInfo");
+//       expect(response.statusCode).toBe(200);
+//     })
+//   });
 
 
 
