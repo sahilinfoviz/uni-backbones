@@ -13,18 +13,25 @@ const registerRouter = require("./user_register");
 const loginRouter = require("./Auth1/login");
 const myRoutes = require("./Auth1/route");
 const csrf = require("csurf");
-// const rateLimit = require("express-rate-limit");
+const slowDown = require("express-slow-down");
 const csrfProtection = csrf({
   cookie: true,
 });
-// const limiter = rateLimit({
-//   max: 100, // limit each IP to 100 max requests
-//   windowMs: 60 * 60 * 1000, // 1 Hour
-//   message: "Too many requests", // message to send
-// });
+
+const speedLimiter = slowDown({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  delayAfter: 100, // allow 100 requests per 15 minutes, then...
+  delayMs: 500 // begin adding 500ms of delay per request above 100:
+  // request # 101 is delayed by  500ms
+  // request # 102 is delayed by 1000ms
+  // request # 103 is delayed by 1500ms
+  // etc.
+});
+
 
 const app = express();
 app.disable("x-powered-by");
+app.enable("trust proxy"); // only if you're behind a reverse proxy (Heroku, Bluemix, AWS if you use an ELB, custom Nginx setup, etc)
 app.use(compression());
 app.use(helmet());
 app.use(xss());
@@ -37,7 +44,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(responseTime());
-// app.use(limiter);
+app.use(speedLimiter);
+
 
 app.use("/new", registerRouter);
 app.use("/api", loginRouter);
