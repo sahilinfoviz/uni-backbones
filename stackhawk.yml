@@ -1,4 +1,4 @@
 app:
-  applicationId: xxXXXXXX-xXXX-xxXX-XXxX-xXXxxXXXXxXX
-  host: http://65.1.86.30:3000/
+  applicationId: bcbc7b89-12bb-4984-9178-d3dbe3a9c9ec
+  host: http://13.234.20.166:3000/
   env: Development
