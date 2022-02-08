@@ -49,6 +49,9 @@ app.use("/api", loginRouter);
 app.get("/welcome", (req, res) => {
   res.json({ message: "Express is up!" });
 });
+app.get("/", (req,res) => {
+  res.json({ message: "welcome to our application"})
+})
 const checkJwt = jwt({
   secret: process.env.JWT_SECRET,
   getToken: (req) => req.cookies.token,
