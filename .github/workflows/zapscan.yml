@@ -1,0 +1,19 @@
+name: ZapScan
+on:
+  push:
+    branches: [ dev ]
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan the application
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.3.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # docker_name: 'owasp/zap2docker-stable'
+          target: 'http://13.232.38.226:3000'
+          #rules_file_name: '.zap/rules.tsv'
+          # cmd_options: '-a'
