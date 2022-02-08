@@ -190,3 +190,21 @@
 {"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-03T13:32:51.227Z"}
 {"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-03T13:32:51.300Z"}
 {"level":"info","message":"user Suras successfully registered","service":"authentication-service","timestamp":"2022-02-03T13:32:51.959Z"}
+{"level":"warn","message":"email or phone or password field can not be empty","service":"authentication-service","timestamp":"2022-02-08T06:23:10.737Z"}
+{"level":"warn","message":"email is not in valid format","service":"authentication-service","timestamp":"2022-02-08T06:23:10.798Z"}
+{"level":"warn","message":"email already exists","service":"authentication-service","timestamp":"2022-02-08T06:23:11.061Z"}
+{"level":"warn","message":"phone number is not in valid format","service":"authentication-service","timestamp":"2022-02-08T06:23:11.409Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-08T06:23:11.459Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-08T06:23:11.522Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-08T06:23:11.575Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-08T06:23:11.625Z"}
+{"level":"info","message":"user Suras successfully registered","service":"authentication-service","timestamp":"2022-02-08T06:23:12.135Z"}
+{"level":"warn","message":"email or phone or password field can not be empty","service":"authentication-service","timestamp":"2022-02-08T06:23:31.633Z"}
+{"level":"warn","message":"email is not in valid format","service":"authentication-service","timestamp":"2022-02-08T06:23:31.672Z"}
+{"level":"warn","message":"phone number is not in valid format","service":"authentication-service","timestamp":"2022-02-08T06:23:32.204Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-08T06:23:32.269Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-08T06:23:32.322Z"}
+{"level":"info","message":"user Suras successfully registered","service":"authentication-service","timestamp":"2022-02-08T06:23:32.339Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-08T06:23:32.379Z"}
+{"level":"warn","message":"password is not in valid format","service":"authentication-service","timestamp":"2022-02-08T06:23:32.428Z"}
+{"level":"info","message":"user Suras successfully registered","service":"authentication-service","timestamp":"2022-02-08T06:23:33.154Z"}
