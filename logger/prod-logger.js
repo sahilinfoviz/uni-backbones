@@ -1,11 +1,12 @@
 const { format, createLogger, transports } = require('winston');
 const { timestamp, combine, errors, json } = format;
+require('dotenv').config();
 // const S3StreamLogger = require('s3-streamlogger').S3StreamLogger;
  
 // const s3_stream = new S3StreamLogger({
-//              bucket: "authemorod",
-//       access_key_id: "AKIAYY4ZQQHZPHDNRWZI",
-//   secret_access_key: "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"
+//              bucket: process.env.AWS_BUCKET_NAME,
+//       access_key_id: process.env.ACCESS_KEY,
+//   secret_access_key: process.env.SECRET_KEY_ID
 // });
 // const transport = new (transports.Stream)({
 //     stream: s3_stream

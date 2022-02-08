@@ -101,14 +101,16 @@ app.post(
   }
 );
 
-// app.get('/logout', async(req, res) => {
-//     try{
-//         res.clearCookie('token');
-//         console.log('logout successfully');
-//     } catch(err){
-//         console.log(err);
-//         return res.status(500).send('something gone wrong')
-//     }
-// });
+app.post('/logout', async(req, res) => {
+  try{
+      res.clearCookie('token');
+      res.json({message: 'User logged out successfully'});
+      logger.info('User logged out successfully');
+  } catch(err){
+      sentry.captureException(err);
+      logger.error(err);
+      return res.status(400).json({ message: "Something went wrong." });
+  }
+});
 
 module.exports = app;
