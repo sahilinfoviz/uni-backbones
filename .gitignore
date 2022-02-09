@@ -9,4 +9,7 @@
 
 #.env
 
+dev.log
+prod.log
+newrelic_agent.log
 
